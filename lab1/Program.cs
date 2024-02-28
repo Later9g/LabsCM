@@ -32,7 +32,7 @@ if(N < m + 1)
 }
 else if (!Common.IsAscending(X))
 {
-    System.IO.File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "result_1.txt", "IER = 2 нарушен порядок возрастания аргумента в входном векторе\r\nX");
+    System.IO.File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "result_1.txt", "IER = 2 нарушен порядок возрастания аргумента в входном векторе X\n");
 }
 else
 {

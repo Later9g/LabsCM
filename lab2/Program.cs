@@ -18,6 +18,7 @@ for (int i = 0; i < N; i++)
     Y[i] = Convert.ToDouble(Console.ReadLine());
 }
 
+
 Console.WriteLine("Введите значение аргумента, при котором будет вычисляться интерполяционное значение функции");
 double XX = Convert.ToDouble(Console.ReadLine());
 
@@ -26,7 +27,15 @@ double A = Convert.ToDouble(Console.ReadLine());
 Console.WriteLine("Введите правой константы краевых условий. ");
 double B = Convert.ToDouble(Console.ReadLine());
 
-var q = CubicSpline.InterpolateBoundariesSorted(X, Y, SplineBoundaryCondition.SecondDerivative, A, SplineBoundaryCondition.SecondDerivative, B);
+if (N < 3)
+    Console.WriteLine("IER  1 – кубический сплайн не может быть построен (N < 2)");
+else if (!Common.IsAscending(X))
+    Console.WriteLine("IER  2 – нарушен порядок возрастания аргумента в входном векторе X");
+else if (XX < X[0] || XX > X[X.Length-1])
+    Console.WriteLine("IER = 3 – точка XX не принадлежит отрезку [x0,xn]");
+else
+{
 
-
-Console.WriteLine(q.Interpolate(XX));
+    var q = CubicSpline.InterpolateBoundariesSorted(X, Y, SplineBoundaryCondition.SecondDerivative, A, SplineBoundaryCondition.SecondDerivative, B);
+    Console.WriteLine(q.Interpolate(XX));
+}

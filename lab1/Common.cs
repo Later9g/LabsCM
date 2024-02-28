@@ -5,7 +5,7 @@ static public class Common
     {
         bool result = true;
         double prev = data[0];
-        for (int i = 0;i < data.Length;i++)
+        for (int i = 1;i < data.Length;i++)
         {
             if (data[i] <= prev)
             {
